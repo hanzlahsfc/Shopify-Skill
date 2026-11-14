@@ -1,0 +1,20 @@
+{
+  "name": "shopify-skill",
+  "description": "Marketplace for the Shopify Skill: production-grade storefront, admin and commerce backend for coding agents",
+  "owner": {
+    "name": "Hanzlah",
+    "url": "https://github.com/hanzlahsfc"
+  },
+  "plugins": [
+    {
+      "name": "shopify-skill",
+      "description": "Build custom online stores indistinguishable from Shopify: Dawn-standard storefront, Polaris-style admin, and a secure commerce backend.",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "Hanzlah",
+        "url": "https://github.com/hanzlahsfc"
+      }
+    }
+  ]
+}

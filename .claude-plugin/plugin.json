@@ -1,0 +1,13 @@
+{
+  "name": "shopify-skill",
+  "description": "Build custom online stores indistinguishable from Shopify: Dawn-standard storefront, Polaris-style admin, and a secure commerce backend.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Hanzlah",
+    "url": "https://github.com/hanzlahsfc"
+  },
+  "homepage": "https://github.com/hanzlahsfc/Shopify-Skill",
+  "repository": "https://github.com/hanzlahsfc/Shopify-Skill",
+  "license": "MIT",
+  "keywords": ["skills", "ecommerce", "shopify", "storefront", "admin", "supabase", "nextjs"]
+}
