@@ -1,0 +1,512 @@
+/* Dawn base: tokens, type, buttons, fields, cards, price, badges.
+   Extracted from a production Dawn-style build. Rename tokens freely; keep the numbers. */
+
+:root {
+  --fg: 18, 18, 18;
+  --bg: 255, 255, 255;
+  --bg-2: 243, 243, 243;
+  --text: rgba(var(--fg), 0.75);
+  --heading: rgb(var(--fg));
+  --line: rgba(var(--fg), 0.08);
+  --line-strong: rgba(var(--fg), 0.55);
+  --sale: #334fb4;
+  --success: #428445;
+  --star: #121212;
+  --page-pad: 15px;
+  --font: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@media (min-width: 750px) {
+  :root {
+    --page-pad: 50px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: rgb(var(--bg));
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 750px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+.content-for-layout {
+  flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, h5,
+.h0, .h1, .h2, .h3, .h4, .h5 {
+  font-family: var(--font);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  color: var(--heading);
+  word-break: break-word;
+}
+.h0 { font-size: 40px; }
+h1, .h1 { font-size: 30px; }
+h2, .h2 { font-size: 20px; }
+h3, .h3 { font-size: 17px; }
+h4, .h4 { font-size: 15px; }
+.h5 { font-size: 13px; }
+@media (min-width: 750px) {
+  .h0 { font-size: 52px; }
+  h1, .h1 { font-size: 40px; }
+  h2, .h2 { font-size: 24px; }
+  h3, .h3 { font-size: 18px; }
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+input, select, textarea {
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+p {
+  margin: 0;
+}
+
+.page-width {
+  max-width: calc(1200px + var(--page-pad) * 2);
+  margin: 0 auto;
+  padding: 0 var(--page-pad);
+}
+.page-width--narrow {
+  max-width: calc(726px + var(--page-pad) * 2);
+}
+
+.section {
+  padding: 36px 0;
+}
+@media (min-width: 750px) {
+  .section {
+    padding: 48px 0;
+  }
+}
+.section--bg {
+  background: rgb(var(--bg-2));
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.caption {
+  font-size: 13px;
+  letter-spacing: 0.07em;
+  line-height: 1.7;
+}
+.caption-ls {
+  font-size: 13px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.rte p + p {
+  margin-top: 16px;
+}
+.rte h2 {
+  margin: 32px 0 12px;
+}
+.rte a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rte ul {
+  padding-left: 20px;
+}
+
+/* ---------- buttons ---------- */
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 45px;
+  min-width: 120px;
+  padding: 0 30px;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-align: center;
+  background: rgb(var(--fg));
+  color: rgb(var(--bg));
+  border-radius: 0;
+  transition: box-shadow 0.1s ease;
+  box-shadow: 0 0 0 1px rgb(var(--fg));
+  -webkit-appearance: none;
+}
+.button:hover {
+  box-shadow: 0 0 0 2px rgb(var(--fg));
+}
+.button--secondary {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+}
+.button--full {
+  width: 100%;
+}
+.button--light {
+  background: rgb(var(--bg));
+  color: rgb(var(--fg));
+  box-shadow: 0 0 0 1px rgb(var(--bg));
+}
+.button--light:hover {
+  box-shadow: 0 0 0 2px rgb(var(--bg));
+}
+.button--outline-light {
+  background: transparent;
+  color: rgb(var(--bg));
+  box-shadow: 0 0 0 1px rgb(var(--bg));
+}
+.button--outline-light:hover {
+  box-shadow: 0 0 0 2px rgb(var(--bg));
+}
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: rgb(var(--fg));
+  position: relative;
+}
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.15s ease;
+}
+.icon-btn:hover svg {
+  transform: scale(1.07);
+}
+
+/* ---------- fields (floating label) ---------- */
+
+.field {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+.field__input {
+  width: 100%;
+  height: 45px;
+  padding: 15px;
+  background: rgb(var(--bg));
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 1px var(--line-strong);
+  font-size: 16px;
+  color: rgb(var(--fg));
+  outline: none;
+  transition: box-shadow 0.1s ease;
+  -webkit-appearance: none;
+}
+textarea.field__input {
+  height: auto;
+  min-height: 100px;
+  padding-top: 22px;
+  resize: vertical;
+}
+.field__input:hover {
+  box-shadow: 0 0 0 2px var(--line-strong);
+}
+.field__input:focus {
+  box-shadow: 0 0 0 2px rgb(var(--fg));
+}
+.field__label {
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  font-size: 16px;
+  color: var(--text);
+  pointer-events: none;
+  transition: top 0.1s ease, font-size 0.1s ease;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+}
+.field__input:focus ~ .field__label,
+.field__input:not(:placeholder-shown) ~ .field__label {
+  top: 4px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.field__input:not(textarea):focus,
+.field__input:not(textarea):not(:placeholder-shown) {
+  padding: 22px 15px 8px;
+}
+.field__button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--fg));
+}
+.field__button svg {
+  width: 16px;
+  height: 16px;
+}
+select.field__input {
+  padding-right: 40px;
+  cursor: pointer;
+}
+.select {
+  position: relative;
+}
+.select svg {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.form-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+.form-message svg {
+  width: 14px;
+  height: 14px;
+  color: var(--success);
+}
+.form-error {
+  color: #b3261e;
+  font-size: 14px;
+}
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ---------- product card + price ---------- */
+
+.card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: rgb(var(--bg));
+}
+.card__media .pimg {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.3s ease, transform 0.6s ease;
+}
+.card__media .product-photo,
+.card__media .product-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card__media .pimg--hover {
+  opacity: 0;
+}
+@media (hover: hover) {
+  .card-wrapper:hover .card__media .pimg--hover {
+    opacity: 1;
+  }
+  .card-wrapper:hover .card__media .pimg--has-hover:not(.pimg--hover) {
+    opacity: 0;
+  }
+  .card-wrapper:hover .card__media .pimg {
+    transform: scale(1.03);
+  }
+}
+.card__badge {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  z-index: 2;
+}
+.badge {
+  display: inline-block;
+  padding: 5px 13px 6px;
+  border-radius: 40px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  background: rgb(var(--fg));
+  color: rgb(var(--bg));
+}
+.badge--sale {
+  background: var(--sale);
+}
+.card__info {
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.card__heading {
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+}
+@media (min-width: 750px) {
+  .card__heading {
+    font-size: 15px;
+  }
+}
+.card__heading a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.card__heading a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.card__rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 12px;
+}
+.card__info .price {
+  margin-top: 6px;
+}
+.quick-add {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  padding-top: 12px;
+}
+.quick-add .button {
+  width: 100%;
+  min-width: 0;
+  padding: 0 12px;
+  font-size: 14px;
+  min-height: 40px;
+}
+@media (min-width: 750px) {
+  .quick-add .button {
+    min-height: 45px;
+    font-size: 15px;
+  }
+}
+
+/* price */
+.price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  color: rgb(var(--fg));
+}
+@media (min-width: 750px) {
+  .price {
+    font-size: 16px;
+  }
+}
+.price s {
+  font-size: 13px;
+  color: var(--text);
+}
+.price--large {
+  font-size: 17px;
+  letter-spacing: 0.13em;
+}
+@media (min-width: 750px) {
+  .price--large {
+    font-size: 18px;
+  }
+}
+.price .badge {
+  align-self: center;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--star);
+}
+.stars svg {
+  width: 13px;
+  height: 13px;
+}
+
